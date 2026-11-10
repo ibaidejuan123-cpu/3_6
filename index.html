@@ -38,25 +38,23 @@
         <script src="js/leaflet.photon.js"></script>
         <script src="js/leaflet-measure.js"></script>
         <script>
-        var map = L.map('map', {
-            zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[34.24871081954369,-9.829207511877703],[45.2208800859181,15.150858923670814]]);
-var osm = L.tileLayer(
-    		'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
-    		{
-        	attribution: '&copy; OpenStreetMap contributors',
-        	maxZoom: 19
-    		}
-		);
-
-	osm.addTo(map);
-	
-var osmLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
-    attribution: '© OpenStreetMap contributors',
-    pane: 'shadowPane', // Esto las sitúa por encima de los marcadores
-    zIndex: 1000
-}).addTo(map);
-
+		var map = L.map('map', {
+    		zoomControl: false,
+    		maxZoom: 28,
+    		minZoom: 1
+		}).fitBounds([
+    		[34.4517317996146,-10.941381390934747],
+    		[44.028175045273564,12.679387416945799]
+		]);
+		// Mapa base OpenStreetMap (sin API Key)
+		var osm = L.tileLayer(
+			'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+			{
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
+				maxZoom: 19
+			}
+		).addTo(map);
+			
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
